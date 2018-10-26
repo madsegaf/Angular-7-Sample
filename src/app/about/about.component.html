@@ -1,3 +1,21 @@
-<p>
-  about works!
-</p>
+<h1>
+  Contoh REST
+</h1>
+<div>
+    <h1>Data Provinsi</h1>
+    <div *ngIf="!dataProvinsi && !dataKabupaten">
+      <img src="../../assets/loading.gif" class="imgloading"/>
+    </div>
+    
+    <select (change)="getKabupaten($event.target.value)" *ngIf="dataProvinsi">
+      <option value="-">---</option>
+      <option [value]="prov.kode_prop" *ngFor="let prov of dataProvinsi">{{prov.propinsi}}</option>
+    </select>    
+</div>
+
+<div *ngIf="dataKabupaten">
+  <h2>Data Kabupaten</h2>
+  <select *ngIf="dataKabupaten">
+      <option [value]="kab.kode_kab_kota" *ngFor="let kab of dataKabupaten">{{kab.kabupaten_kota}}</option>
+    </select>    
+</div>

@@ -1,3 +1,14 @@
-<p>
-  home works !
-</p>
+<h1 [class.gray]="H1Style">HOME</h1>
+<h2 [ngClass]="
+{
+  'gray' : H1Style,
+  'large' : !H1Style
+}
+">ngClass</h2>
+
+<h3 [ngStyle]="{
+  'color' : H1Style ? 'gray' : 'blue',
+  'font-family' : H1Style ? 'Comic Sans MS' : 'Monotype Corsiva'
+}">ngStyle</h3>
+
+<button (click)="FirstClick()">Click Me</button>
