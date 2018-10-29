@@ -6,11 +6,15 @@
 
   <label>
     Name : 
+    <!-- [ngModel]="datamodel.name"  -->
     <input type="text" formControlName="name" placeholder="Put the name ..."/>
     <div *ngIf="submitted && messageForm.controls.name.errors" style="color: red;background-color: yellow">
       <div *ngIf="submitted && messageForm.controls.name.errors.required">
         Name is required
       </div>
+      <div *ngIf="submitted && messageForm.controls.name.errors.minlength">
+          Minimal 10 Length Character
+        </div>
     </div>  
 </label>
 <br>
@@ -56,3 +60,12 @@
   <strong>Hasil : </strong><br>
   <span>{{result}}</span><br> 
 </div>
+
+<div *ngIf="kontak_arr.length">
+    <br>
+    <br>
+    <strong>List SMS Terkirim</strong><br>
+    <div *ngFor="let user of kontak_arr">
+      <span>{{user.name}} ({{user.phone}})</span>
+    </div>
+  </div>
