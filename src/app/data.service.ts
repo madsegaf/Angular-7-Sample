@@ -6,6 +6,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class DataService {
 
+  mykey : string;
+  mypass : string;
+
   constructor(private http : HttpClient) { }
 
 
@@ -25,6 +28,12 @@ export class DataService {
    return this.http.post('https://provkabwebservices.azurewebsites.net/home/ajaxkab',{idprov:id});
   }
 
+  SendSMSMessage(name : string, phone : string, message : string){
+    this.mykey = "2qvgj9";
+    this.mypass = "Pa$$w0rd";
+    return this.http.get('https://reguler.zenziva.net/apps/smsapi.php?userkey='+this.mykey+
+    '&passkey='+this.mypass+'&nohp='+phone+'&pesan=Hi ' + name +'\n' + message, {responseType: 'text'});
+  }
 }
 
 

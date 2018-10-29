@@ -1,3 +1,58 @@
-<p>
-  contact works!
-</p>
+<h1>Contact Us</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+  <h5 *ngIf="success">Your form is valid :D</h5>
+
+  <label>
+    Name : 
+    <input type="text" formControlName="name" placeholder="Put the name ..."/>
+    <div *ngIf="submitted && messageForm.controls.name.errors" style="color: red;background-color: yellow">
+      <div *ngIf="submitted && messageForm.controls.name.errors.required">
+        Name is required
+      </div>
+    </div>  
+</label>
+<br>
+
+<label>
+  Phone : 
+  <input type="number" formControlName="phone" placeholder="Put the phone ..."/>
+  <div *ngIf="submitted && messageForm.controls.phone.errors" style="color: red;background-color: yellow">
+    <div *ngIf="submitted && messageForm.controls.phone.errors.required">
+      Phone is required
+    </div>
+  </div>  
+</label>
+<br>
+
+
+<label>
+  Name : 
+  <textarea formControlName="message"></textarea>
+  <div *ngIf="submitted && messageForm.controls.message.errors" style="color: red;background-color: yellow">
+    <div *ngIf="submitted && messageForm.controls.message.errors.required">
+      Message is required
+    </div>
+  </div>  
+</label>
+<br>
+<br>
+
+<input type="submit" value="Send SMS" class="cta"/>
+</form>
+
+<div *ngIf="submitted" class="results">
+  <strong>Name : </strong>
+  <span>{{messageForm.controls.name.value}}</span><br>
+  <strong>Phone Number : </strong>
+  <span>{{messageForm.controls.phone.value}}</span><br>
+  <strong>Message : </strong>
+  <span>{{messageForm.controls.message.value}}</span><br>
+</div>
+
+<div *ngIf="result">
+  <br>
+  <strong>Hasil : </strong><br>
+  <span>{{result}}</span><br> 
+</div>
