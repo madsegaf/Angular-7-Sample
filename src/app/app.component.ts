@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ANGULAR 7';
+  islogin : string;
+
+  constructor(private router : Router){
+    //sessionStorage.removeItem('islogin');
+
+    if(sessionStorage.getItem('islogin') == null || sessionStorage.getItem('islogin') == 'false'){ 
+      sessionStorage.setItem('islogin','false');
+      this.islogin = sessionStorage.getItem('islogin');
+      this.router.navigateByUrl("/login");
+    }else{
+      sessionStorage.setItem('islogin','true');
+      this.islogin = sessionStorage.getItem('islogin');           
+    }
+  }
+
 }
