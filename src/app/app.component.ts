@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor(private router : Router){
     //sessionStorage.removeItem('islogin');
+    sessionStorage.setItem('islogin','true');
 
     if(sessionStorage.getItem('islogin') == null || sessionStorage.getItem('islogin') == 'false'){ 
       sessionStorage.setItem('islogin','false');
